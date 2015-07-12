@@ -2,6 +2,7 @@ body{
 	margin: 2.5% 7%;
 	font-size: 18px;
 	font-family: 'Arial';
+	max-height: auto;
 }
 
 #logo > img{
@@ -23,18 +24,18 @@ body{
 }
 
 #productrow{
-	margin-top: 15px;
+	margin-top: 25px;
 }
 
 #name{
 	text-align: center;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 #details{
 	float: right;
 	width: 50%;
-	margin: 35px 0 0 0;
+	margin: 65px 0 0 0;
 }
 
 #guess{
@@ -46,15 +47,26 @@ body{
 }
 
 #optionrowa{
-	margin-top: 15px;
+	margin-top: 20px;
+	margin-bottom: 15px;
 }
 
 
 #optionrowb{
 	margin-top:10px;
+	margin-bottom: 20px;
 }
 
 #copyright{
 	text-align: center;
 	font-weight: bold;
+}
+
+.glyphicon {
+  top: 3px;
+}
+
+#guess > div{
+	margin-left: 3px;
+	font-style: italic;
 }
