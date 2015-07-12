@@ -9,3 +9,6 @@ ID Reference
 #logo
 #category
 #nav
+
+
+Default Facebook Canvas Size = 760px
