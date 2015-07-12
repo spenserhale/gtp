@@ -1,13 +1,45 @@
 body{
-	margin: 2.5% 5%;
+	margin: 2.5% 7%;
 }
 
 #category{
 	text-align: center;
-	padding-top: 5px;
+	padding-top: 0;
+}
+
+#skip{
+	text-align: right;
+}
+
+#logo > img{
+	padding-left:10px;
+}
+
+#productrow{
+	margin-top: 15px;
+}
+
+#optionsrowa{
+	margin-top: 15px;
 }
 
 #name{
 	text-align: center;
 	margin-top: 10px;
+}
+
+#optionsrowb{
+	margin-top:8px;
+}
+
+#guess{
+	font-family: 'Arial';
+	text-align: left;
+	font-weight: bold;
+}
+
+#copyright{
+	text-align: center;
+	font-family: 'Arial';
+	font-weight: bold;
 }
