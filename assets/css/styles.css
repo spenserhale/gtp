@@ -4,29 +4,25 @@ body{
 	font-family: 'Arial';
 }
 
+#logo > img{
+	margin-left:10px;
+}
+
 #category{
 	text-align: center;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
-#skip{
+#favorites{
 	text-align: right;
 }
 
-#logo > img{
-	padding-left:10px;
-}
-
-#skip > img{
-	padding-right: 10px;
+#favorites > img{
+	margin-right: 10px;
 }
 
 #productrow{
-	margin-top: 15px;
-}
-
-#optionsrowa{
 	margin-top: 15px;
 }
 
@@ -35,13 +31,27 @@ body{
 	margin-top: 10px;
 }
 
-#optionsrowb{
-	margin-top:10px;
+#details{
+	float: right;
+	width: 50%;
+	margin: 35px 0 0 0;
 }
 
 #guess{
 	text-align: left;
-	font-weight: bold;
+}
+
+#skip{
+	text-align: right;
+}
+
+#optionrowa{
+	margin-top: 15px;
+}
+
+
+#optionrowb{
+	margin-top:10px;
 }
 
 #copyright{
