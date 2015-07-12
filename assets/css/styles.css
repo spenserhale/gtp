@@ -1,10 +1,13 @@
 body{
 	margin: 2.5% 7%;
+	font-size: 18px;
+	font-family: 'Arial';
 }
 
 #category{
 	text-align: center;
-	padding-top: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 #skip{
@@ -13,6 +16,10 @@ body{
 
 #logo > img{
 	padding-left:10px;
+}
+
+#skip > img{
+	padding-right: 10px;
 }
 
 #productrow{
@@ -29,17 +36,15 @@ body{
 }
 
 #optionsrowb{
-	margin-top:8px;
+	margin-top:10px;
 }
 
 #guess{
-	font-family: 'Arial';
 	text-align: left;
 	font-weight: bold;
 }
 
 #copyright{
 	text-align: center;
-	font-family: 'Arial';
 	font-weight: bold;
 }
