@@ -12,3 +12,8 @@ ID Reference
 
 
 Default Facebook Canvas Size = 760px
+
+
+color scheme: 
+
+
