@@ -114,11 +114,37 @@
 	<script src="http://chancejs.com/chance.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script>
-		var bucks = chance.dollar();
-		document.getElementById("buttona").innerHTML = bucks;
-		document.getElementById("buttonb").innerHTML = chance.dollar();
-		document.getElementById("buttonc").innerHTML = chance.dollar();
-		document.getElementById("buttond").innerHTML = chance.dollar();                  
+var bucks = chance.dollar();
+var bucksTwo;
+var bucksThree;
+var bucksFour;
+function whatBucksOne(){
+    if( bucks.charAt( 0 ) === '$' )
+    bucksTwo = bucks.slice( 1 );
+}
+function whatBucksTwo(){
+    if( bucks.charAt( 0 ) === '$' )
+    bucksThree = bucks.slice( 1 );
+}
+function whatBucksThree(){
+    if( bucks.charAt( 0 ) === '$' )
+    bucksFour = bucks.slice( 1 );
+}
+whatBucksOne();
+whatBucksTwo();
+whatBucksThree();
+
+
+var maxBucks =  bucksTwo * 1.10;
+var maxBucksTwo = bucksThree * 1.90;
+var maxBucksThree = bucksFour * .5;
+document.getElementById("buttona").innerHTML = bucks;
+document.getElementById("buttonb").innerHTML = chance.dollar({max: maxBucks});
+document.getElementById("buttonc").innerHTML = chance.dollar({max: maxBucksTwo});
+document.getElementById("buttond").innerHTML = chance.dollar({max: maxBucksThree});
+        
+           
+               
 	</script>
 
 
