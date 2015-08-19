@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<title>Guess The Price!</title>
   	<meta charset="utf-8">
@@ -8,7 +7,6 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
 <body id="body">	
 	<div id="content" class="container-fluid">	
 		<header id="header">
@@ -29,14 +27,12 @@
 			</div><!--/#toprow-->
 			<hr />
 		</header> <!--/header-->
-
 		<section>
 			<div id="productrow" class="row">
 
 				<div id="image" class="col-xs-4">
 					<img src="http://placehold.it/200x250" class="img-rounded"/>
 				</div><!--/#image-->
-
 				<div id="name" class="col-xs-8">
 					<div><img src="http://placehold.it/400x80" class="img-rounded"/></div>
 					<div id="details"><a><button class="btn btn-primary btn-lg btn-block" type="button">Details</button></a></div>
@@ -44,7 +40,6 @@
 
 			</div><!--/#productrow-->
 		</section><!--/#product-->
-
 		<section>
 			<div id="iconrow" class="row">
 
@@ -58,7 +53,6 @@
 			</div><!--/#iconrow-->
 			<hr />
 		</section>
-
 		<section>
 			<div id="guessrow" class="row">
 
@@ -71,7 +65,6 @@
 				</div><!--/#skip-->
 			</div><!--/#guessrow-->
 		</section><!--/#question-->
-
 		<section id="option">
 			<div id="optionrowa" class="row">
 		
@@ -97,7 +90,6 @@
 			</div> <!--/#optionsrowb -->
 			<hr />
 		</section><!--/#options -->
-
 		<footer id="footer">
 			<div id="bottomrow" class="row">
 
@@ -108,45 +100,23 @@
 			</div><!--/#bottomrow-->	
 		</footer><!--/#footer-->
 	</div><!--/#content-->
-
 	<!--/JavaScript-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://chancejs.com/chance.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script>
-var bucks = chance.dollar();
-var bucksTwo;
-var bucksThree;
-var bucksFour;
-function whatBucksOne(){
-    if( bucks.charAt( 0 ) === '$' )
-    bucksTwo = bucks.slice( 1 );
-}
-function whatBucksTwo(){
-    if( bucks.charAt( 0 ) === '$' )
-    bucksThree = bucks.slice( 1 );
-}
-function whatBucksThree(){
-    if( bucks.charAt( 0 ) === '$' )
-    bucksFour = bucks.slice( 1 );
-}
-whatBucksOne();
-whatBucksTwo();
-whatBucksThree();
-
-
-var maxBucks =  bucksTwo * 1.10;
-var maxBucksTwo = bucksThree * 1.90;
-var maxBucksThree = bucksFour * .5;
-document.getElementById("buttona").innerHTML = bucks;
-document.getElementById("buttonb").innerHTML = chance.dollar({max: maxBucks});
-document.getElementById("buttonc").innerHTML = chance.dollar({max: maxBucksTwo});
-document.getElementById("buttond").innerHTML = chance.dollar({max: maxBucksThree});
-        
-           
-               
+		var correct, incorrect1, incorrect2, incorrect3;
+		var removeDollarSign = function(correct){
+			return correct.charAt(0) === '$' ? correct.slice(1) : correct;		
+		};	
+		var correct = removeDollarSign(chance.dollar());
+		var incorrect1 =  correct * 1.10;
+		var incorrect2 = correct * 1.90;
+		var incorrect3 = correct * .5;
+		document.getElementById("buttona").innerHTML = correct;
+		document.getElementById("buttonb").innerHTML = chance.dollar({max: incorrect1});
+		document.getElementById("buttonc").innerHTML = chance.dollar({max: incorrect2});
+		document.getElementById("buttond").innerHTML = chance.dollar({max: incorrect3});               
 	</script>
-
-
 </body><!--/#body-->
 </html><!--/html-->
