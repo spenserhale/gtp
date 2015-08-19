@@ -70,22 +70,22 @@
 			<div id="optionrowa" class="row">
 		
 				<div id="optiona" class="col-xs-6">
-					<a><button id="buttona" class="btn btn-primary btn-lg btn-block" type="button"></button></a>	
+					<a><button id="buttona" class="btn btn-primary btn-lg btn-block" type="button">$</button></a>	
 				</div><!--/#optiona-->
 
 				<div id="optionb" class="col-xs-6"> 
-					<a><button id="buttonb" class="btn btn-primary btn-lg btn-block" type="button"></button></a>	
+					<a><button id="buttonb" class="btn btn-primary btn-lg btn-block" type="button">$</button></a>	
 				</div><!--/#optionb -->
 
 			</div> <!--/#optionsrowa -->
 			<div id="optionrowb" class="row">
 				
 				<div id="optionc" class="col-xs-6"> 
-					<a><button id="buttonc" class="btn btn-primary btn-lg btn-block" type="button"></button></a>	
+					<a><button id="buttonc" class="btn btn-primary btn-lg btn-block" type="button">$</button></a>	
 				</div><!--/#optionc -->
 
 				<div id="optiond" class="col-xs-6"> 
-					<a><button id="buttond"class="btn btn-primary btn-lg btn-block" type="button"></button></a>
+					<a><button id="buttond"class="btn btn-primary btn-lg btn-block" type="button">$</button></a>
 				</div><!--/#optiond -->
 
 			</div> <!--/#optionsrowb -->
@@ -95,7 +95,7 @@
 			<div id="bottomrow" class="row">
 
 				<div id="copyright" class="col-xs-12">
-					<p>&#169; 2015 Guess The Price!</p>
+					<p id="demo">Guess Dollar!</p>
 				</div><!--/#copyright-->
 
 			</div><!--/#bottomrow-->	
@@ -106,18 +106,30 @@
 	<script src="http://chancejs.com/chance.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script>
-		var correct, incorrect1, incorrect2, incorrect3;
+		var correct, 
+		    incorrect1, 
+		    incorrect2, 
+		    incorrect3,
+		    removeDollarSign,
+		    answers,
+		    incorrectInterval;
+
 		var removeDollarSign = function(correct){
 			return correct.charAt(0) === '$' ? correct.slice(1) : correct;		
-		};	
+		};
+
 		var correct = removeDollarSign(chance.dollar());
-		var incorrect1 =  correct * 1.10;
-		var incorrect2 = correct * 1.90;
-		var incorrect3 = correct * .5;
-		document.getElementById("buttona").innerHTML = correct;
-		document.getElementById("buttonb").innerHTML = chance.dollar({max: incorrect1});
-		document.getElementById("buttonc").innerHTML = chance.dollar({max: incorrect2});
-		document.getElementById("buttond").innerHTML = chance.dollar({max: incorrect3});               
+		var incorrectInterval = correct * chance.floating({min: 1.0, max: 1.50});
+		var incorrect1 = removeDollarSign(chance.dollar({max: incorrectInterval}));
+		var incorrect2 = removeDollarSign(chance.dollar({max: incorrectInterval}));
+		var incorrect3 = removeDollarSign(chance.dollar({max: incorrectInterval}));
+		var answers = [correct, incorrect1, incorrect2, incorrect3];
+		document.getElementById("demo").innerHTML = answers.valueOf();
+		document.getElementById("buttona").innerHTML = answers[0];
+		document.getElementById("buttonb").innerHTML = answers[1];
+		document.getElementById("buttonc").innerHTML = answers[2];
+		document.getElementById("buttond").innerHTML = answers[3];
+		              
 	</script>
 </body><!--/#body-->
 </html><!--/html-->
