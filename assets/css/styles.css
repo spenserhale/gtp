@@ -4,6 +4,14 @@ body{
 	font-family: 'Arial';
 	max-height: auto;
 }
+a {
+	cursor: pointer;
+	color: inherit;
+}
+a:hover{
+	text-decoration: none;
+	color: green;
+}
 
 #logo > img{
 	margin-left:10px;
@@ -15,11 +23,11 @@ body{
 	padding-bottom: 10px;
 }
 
-#favorites{
+#share{
 	text-align: right;
 }
 
-#favorites > img{
+#share > img{
 	margin-right: 10px;
 }
 
@@ -69,4 +77,17 @@ body{
 #guess > div{
 	margin-left: 3px;
 	font-style: italic;
+}
+#image{
+	text-align: center;
+}
+#share > a > i{
+	font-size: 2.5em;
+	color: #333 !important;
+}
+#dropdownMenu{
+    width: 80%;
+}
+#logo > i{
+	font-size: 2.5em;
 }
