@@ -91,3 +91,10 @@ a:hover{
 #logo > i{
 	font-size: 2.5em;
 }
+.btn{
+	background-color:#006400;
+}
+.btn-default {
+    color: #fff;
+    border-color: #006400;
+}

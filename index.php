@@ -118,10 +118,10 @@
 		var incorrect3 = removeDollarSign(chance.dollar({max: incorrectInterval}));
 		var answers = [correct, incorrect1, incorrect2, incorrect3];
 		var answers = answers.sort(function(a, b){return a-b});
-		document.getElementById("buttonA").innerHTML = answers[0];
-		document.getElementById("buttonB").innerHTML = answers[1];
-		document.getElementById("buttonC").innerHTML = answers[2];
-		document.getElementById("buttonD").innerHTML = answers[3];	              
+		document.getElementById("buttonA").innerHTML = '$' + answers[0];
+		document.getElementById("buttonB").innerHTML = '$' + answers[1];
+		document.getElementById("buttonC").innerHTML = '$' + answers[2];
+		document.getElementById("buttonD").innerHTML = '$' + answers[3];	              
 	</script>
 </body><!--/#body-->
 </html><!--/html-->
