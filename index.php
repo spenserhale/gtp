@@ -54,7 +54,7 @@
 				</div><!--/#image-->
 				<div id="name" class="col-xs-8">
 					<div><h3>"39" Inch Full Size Black Student Beginner Classical Nylon String Guitar &amp; DirectlyCheap&trade; Translucent Blue Medium Guitar Pick (PRO-S Series) [Teacher Approved]</h3></div>
-					<div id="details"><a><button class="btn btn-primary btn-lg btn-block" type="button">Source</button></a></div>
+					<div id="details"><a><button class="btn btn-lg btn-block" type="button">Source</button></a></div>
 				</div><!--/#name-->
 			</div><!--/#productrow-->
 			<hr />
