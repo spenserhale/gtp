@@ -218,8 +218,8 @@
 			} else {
 				choiceValue = chance.floating({
 					fixed: 2,
-					min: answer * (choiceRanges[i] - spreadMultiplier),
-					max: answer * (choiceRanges[i] + spreadMultiplier)
+					min: answer * (choiceRanges[i] - (spreadMultiplier * 0.9 )),
+					max: answer * (choiceRanges[i] + (spreadMultiplier * 0.9 ))
 				});
 				choices[i + 1]['class'] = 'incorrect';
 			}
