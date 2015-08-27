@@ -102,100 +102,83 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 	<script>
-	// @difficulty 1 - 10, higher the easier
-// Difficulty is still random
-function getChoices(difficulty) {
+			// @difficulty 1 - 10, higher the easier
+		// Difficulty is still random
+		function getChoices(difficulty) {
 
-    //Get Answer and Answer Placement
-    var answer = chance.floating({fixed: 2, min: 100, max: 200}),
-        answerPlacement = chance.integer({min: 0, max: 3}),
-        choices = [],
-        choiceRanges,
-        choiceValue,
-        spreadMultiplier = chance.floating({fixed: 2, min: 0.01, max: (difficulty / 100 )}); //originally 0.05
+		    //Get Answer and Answer Placement
+		    var answer = chance.floating({fixed: 2, min: 100, max: 200}),
+		        answerPlacement = chance.integer({min: 0, max: 3}),
+		        choices = [],
+		        choiceRanges,
+		        choiceValue,
+		        answerClass,
+		        spreadMultiplier = chance.floating({fixed: 2, min: 0.01, max: (difficulty / 100 )}); //originally 0.05
 
-    //Setup Debug
-    console.log('spreadMultiplier: ' + spreadMultiplier * 100 + '%');
-    console.log('answer: ' + answer);
-    console.log('answerPlacement: ' + answerPlacement);
+		    //Setup Debug
+		    console.log('spreadMultiplier: ' + spreadMultiplier * 100 + '%');
+		    console.log('answer: ' + answer);
+		    console.log('answerPlacement: ' + answerPlacement);
 
-    //Set up Choice Ranges based on Answer Placement (Matrix)
-    switch(answerPlacement) {
-        case 0:
-            choiceRanges = [1, 1 + spreadMultiplier, 1 + spreadMultiplier * 2, 1 + spreadMultiplier * 3];
-            break;
-        case 1:
-            choiceRanges = [1 - spreadMultiplier, 1, 1 + spreadMultiplier, 1 + spreadMultiplier * 2];
-            break;
-        case 2:
-            choiceRanges = [1 - spreadMultiplier * 2, 1 - spreadMultiplier, 1, 1 + spreadMultiplier];
-            break;
-        case 3:
-            choiceRanges = [1 - spreadMultiplier * 3, 1 - spreadMultiplier * 2, 1 - spreadMultiplier, 1];
-            break;
-    }
+		    //Set up Choice Ranges based on Answer Placement (Matrix)
+		    switch(answerPlacement) {
+		        case 0:
+		            choiceRanges = [1, 1 + spreadMultiplier, 1 + spreadMultiplier * 2, 1 + spreadMultiplier * 3];
+		            answerClass = document.getElementById("buttonA");
+		            break;
+		        case 1:
+		            choiceRanges = [1 - spreadMultiplier, 1, 1 + spreadMultiplier, 1 + spreadMultiplier * 2];
+		            answerClass = document.getElementById("buttonB");
+		            break;
+		        case 2:
+		            choiceRanges = [1 - spreadMultiplier * 2, 1 - spreadMultiplier, 1, 1 + spreadMultiplier];
+		            answerClass = document.getElementById("buttonC");
+		            break;
+		        case 3:
+		            choiceRanges = [1 - spreadMultiplier * 3, 1 - spreadMultiplier * 2, 1 - spreadMultiplier, 1];
+		            answerClass = document.getElementById("buttonD");
+		            break;
+		    }
+		    // Add a new class to the correct button
+		    answerClass.className = answerClass.className + " answer";
+		    // Create Choices
+		    for (var i = 0; i < 5; i++) {
+		        if(choiceRanges[i] === 1) {
+		            choiceValue = answer;
+		        } else {
+		            choiceValue = chance.floating({
+		                fixed: 2,
+		                min: answer * (choiceRanges[i] - spreadMultiplier),
+		                max: answer * (choiceRanges[i] + spreadMultiplier)
+		            });
+		        }
+		        // If want to round to closest hundredth of a decimal
+		        choices[i] = '$' + ( Math.round( 100 * (choiceRanges[i] * choiceValue) ) / 100 );
 
-    // Create Choices
-    for (var i = 0; i < 5; i++) {
-        if(choiceRanges[i] === 1) {
-            choiceValue = answer;
-        } else {
-            choiceValue = chance.floating({
-                fixed: 2,
-                min: answer * (choiceRanges[i] - spreadMultiplier),
-                max: answer * (choiceRanges[i] + spreadMultiplier)
-            });
-        }
-        // If want to round to closest hundredth of a decimal
-        choices[i] = '$' + ( Math.round( 100 * (choiceRanges[i] * choiceValue) ) / 100 );
+		        // If want to round to 99 cents
+		        //choices[i] = '$' + (Math.round(choiceRanges[i] * choiceValue) - 0.01);
+		    }
 
-        // If want to round to 99 cents
-        //choices[i] = '$' + (Math.round(choiceRanges[i] * choiceValue) - 0.01);
-    }
+		    // Sort Choices
+		    choices = choices.sort(function (a, b) {
+		        return a - b;
+		    });
 
-    // Sort Choices
-    choices = choices.sort(function (a, b) {
-        return a - b;
-    });
+		    //Choice Debug
+		    console.log('choice A: ' + choices[0]);
+		    console.log('choice B: ' + choices[1]);
+		    console.log('choice C: ' + choices[2]);
+		    console.log('choice D: ' + choices[3]);
 
-    //Choice Debug
-    console.log('choice A: ' + choices[0]);
-    console.log('choice B: ' + choices[1]);
-    console.log('choice C: ' + choices[2]);
-    console.log('choice D: ' + choices[3]);
+		    document.getElementById("buttonA").innerHTML = choices[0];
+		    document.getElementById("buttonB").innerHTML = choices[1];
+			document.getElementById("buttonC").innerHTML = choices[2];
+			document.getElementById("buttonD").innerHTML = choices[3];
 
-    document.getElementById("buttonA").innerHTML = choices[0];
-    document.getElementById("buttonB").innerHTML = choices[1];
-	document.getElementById("buttonC").innerHTML = choices[2];
-	document.getElementById("buttonD").innerHTML = choices[3];
+		    return choices;
+		}
 
-    return choices;
-}
-
-getChoices(5);
+		getChoices(5);
 	</script>
-	<!-- <script>
-		var correct, 
-		    incorrect1, 
-		    incorrect2, 
-		    incorrect3,
-		    removeDollarSign,
-		    answers,
-		    incorrectInterval;
-		var removeDollarSign = function(correct){
-			return correct.charAt(0) === '$' ? correct.slice(1) : correct;		
-		};
-		var correct = removeDollarSign(chance.dollar());
-		var incorrectInterval = correct * chance.floating({min: 1.0, max: 1.50});
-		var incorrect1 = removeDollarSign(chance.dollar({max: incorrectInterval}));
-		var incorrect2 = removeDollarSign(chance.dollar({max: incorrectInterval}));
-		var incorrect3 = removeDollarSign(chance.dollar({max: incorrectInterval}));
-		var answers = [correct, incorrect1, incorrect2, incorrect3];
-		var answers = answers.sort(function(a, b){return a-b});
-		document.getElementById("buttonA").innerHTML = '$' + answers[0];
-		document.getElementById("buttonB").innerHTML = '$' + answers[1];
-		document.getElementById("buttonC").innerHTML = '$' + answers[2];
-		document.getElementById("buttonD").innerHTML = '$' + answers[3];	              
-	</script> -->
 </body><!--/#body-->
 </html><!--/html-->
